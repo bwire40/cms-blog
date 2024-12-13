@@ -155,28 +155,28 @@ confirm_login();
                                 echo $Admin; ?></td>
 
                             <td>
-                                    <?php
-                                     $TotalApprovedComments=total_approved_comments($Id);
-                                     if($TotalApprovedComments>0){
-                                         ?>
-                                        <span class="badge bg-success">
+                                <?php
+                                $TotalApprovedComments = total_approved_comments($Id);
+                                if ($TotalApprovedComments > 0) {
+                                ?>
+                                    <span class="badge bg-success">
                                         <?php
                                         echo $TotalApprovedComments;
                                         ?>
-                                        </span>
-                                   <?php  }  ?>
+                                    </span>
+                                <?php  }  ?>
                                 </span>
-                                    <?php 
-                                    $TotaldisapprovedComments=total_disapproved_comments($Id);
-                                    if($TotaldisapprovedComments>0){
+                                <?php
+                                $TotaldisapprovedComments = total_disapproved_comments($Id);
+                                if ($TotaldisapprovedComments > 0) {
+                                ?>
+                                    <span class="badge bg-danger">
+                                        <?php
+                                        echo $TotaldisapprovedComments;
                                         ?>
-                                       <span class="badge bg-danger">
-                                       <?php
-                                       echo $TotaldisapprovedComments;
-                                       ?>
-                                       </span>
-                                  <?php  }  ?>
-                               </span>
+                                    </span>
+                                <?php  }  ?>
+                                </span>
                             </td>
                             <td><a target="_blank" href="../../container users/pages_users/fullPost.php?id=<?php echo $Id; ?>">
                                     <span class="btn btn-info">Preview</span></a></td>
@@ -221,7 +221,7 @@ confirm_login();
                             <td><?php echo $sr; ?></td>
                             <td><?php
                                 echo $Username; ?></td>
-                                <td><?php
+                            <td><?php
                                 echo $User_name; ?></td>
                             <td><?php
                                 echo $Datetime; ?></td>

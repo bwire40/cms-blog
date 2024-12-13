@@ -19,12 +19,11 @@ if (isset($_POST["submit"])) {
 
 
     //checking user input
-    if (empty($Username)||empty($Password)) {
+    if (empty($Username) || empty($Password)) {
         $_SESSION["ErrorMessage"] = "All fields must be filled out!";
         Redirect_to("login.php");
-    }
-     else {
-       
+    } else {
+
         $ConnectingDB;
         $sql = "select * from admins where username=:UsernamE";
 
@@ -34,22 +33,20 @@ if (isset($_POST["submit"])) {
         $Found_Account = $stmt->fetch();
 
         if (password_verify($Password, $Found_Account["password"])) {
-           $_SESSION["UserId"]=$Found_Account["id"];
-           $_SESSION["UserName"]=$Found_Account["username"];
-           $_SESSION["AdminName"]=$Found_Account["name"];
+            $_SESSION["UserId"] = $Found_Account["id"];
+            $_SESSION["UserName"] = $Found_Account["username"];
+            $_SESSION["AdminName"] = $Found_Account["name"];
 
-           if(isset($_SESSION["TrackingURL"])){
-               Redirect_to($_SESSION["TrackingURL"]);
-           }else{
-               Redirect_to("Dashboard.php");
-           }
-           $_SESSION["SuccessMessage"]="Welcome ".$_SESSION["AdminName"];
-           Redirect_to("Dashboard.php");
-       }else{
-           $_SESSION["ErrorMessage"]="Incorrect Username/Password";
-           Redirect_to("login.php");
-       }
+            if (isset($_SESSION["TrackingURL"])) {
+                Redirect_to($_SESSION["TrackingURL"]);
+            } else {
+                Redirect_to("Dashboard.php");
+            }
+            $_SESSION["SuccessMessage"] = "Welcome " . $_SESSION["AdminName"];
+            Redirect_to("Dashboard.php");
+        } else {
+            $_SESSION["ErrorMessage"] = "Incorrect Username/Password";
+            Redirect_to("login.php");
+        }
     }
 }
-
-?>
